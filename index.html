@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo list</title>
+  </head>
+  <body>
+      <div class="container">
+    <h1>Att göra</h1>
+
+    <div id="todo-list"></div>
+
+    <div id="completed-list"></div>
+
+
+    <form id="todo-form">
+      <label for="task-input">Ny uppgift</label>
+      <input type="text" id="task-input" name="task-input" placeholder="Uppgift som ska göras">
+
+      <label for="priority-select">Prioritet</label>
+      <select id="priority-select">
+        <option value="">Välj prioritet</option>
+        <option value="1" class="high">Hög</option>
+        <option value="2" class="medium">Medel</option>
+        <option value="3" class="low">Låg</option>
+      </select>
+      <button type="submit">Lägg till</button>
+    </form>
+
+  </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
