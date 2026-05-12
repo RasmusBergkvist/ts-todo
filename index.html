@@ -1,37 +1,50 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo list</title>
-  </head>
-  <body>
-      <div class="container">
-    <h1>Att göra</h1>
-    <ul id="todo-list"></ul>
-      
-    <h2>Slutförda uppgifter</h2>
-    <ul id="completed-list"></ul>
+<html lang="sv">
 
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo list</title>
+</head>
 
-    <form id="todo-form">
-      <span id="error" class="error"></span>
-      
-      <label for="task-input">Ny uppgift</label>
-      <input type="text" id="task-input" name="task-input" placeholder="Uppgift som ska göras">
+<body>
+  <div class="container">
+    <header>
+      <h1>Min lista</h1>
+    </header>
 
-      <label for="priority-select">Prioritet</label>
-      <select id="priority-select">
-        <option value="" selected disabled>Välj prioritet</option>
-        <option value="1" class="high">Hög</option>
-        <option value="2" class="medium">Medel</option>
-        <option value="3" class="low">Låg</option>
-      </select>
-      <button type="submit">Lägg till</button>
-    </form>
+    <section class="add">
+      <h2>Lägg till uppgift</h2>
+      <form id="todo-form">
+        <span id="error" class="error"></span>
+
+        <label for="task-input">Ny uppgift</label>
+        <input type="text" id="task-input" name="task-input" placeholder="Uppgift som ska göras">
+
+        <label for="priority-select">Prioritet</label>
+        <select id="priority-select">
+          <option value="" selected disabled>Välj prioritet</option>
+          <option value="1" class="high">Hög</option>
+          <option value="2" class="medium">Medel</option>
+          <option value="3" class="low">Låg</option>
+        </select>
+        <button type="submit">Lägg till</button>
+      </form>
+    </section>
+
+    <section class="todo">
+      <h2>Ska göras</h2>
+      <ul id="todo-list" class="todo-list"></ul>
+    </section>
+
+    <section class="completed">
+      <h2>Färdigt</h2>
+      <ul id="completed-list" class="completed-list"></ul>
+    </section>
 
   </div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>

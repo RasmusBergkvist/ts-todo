@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: #23272e;
+    
+
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    color:rgb(231, 232, 204);
+    padding: 1rem;
+}
+
+ul {
+    margin-block: 1rem;
+}
+
+li {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    
+    
+}
+
+section {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #2c313a;
+    border: 1px solid #3e4451;
+    border-radius: 12px;
+}
+
+h1, h2 {
+    color:  #c1c68d;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+}
+
+/* Formulär */ 
+form {
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    
+}
+
+label {
+    font-size: 1.1rem;
+    font-weight: 600;
+
+}
+
+input, select {
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 1rem;
+
+}
+
+.todo-item label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  
+    
+}
+
+
+input[type="checkbox"] {
+    height: 20px;
+    width: 20px;
+    vertical-align: middle;
+    cursor: pointer;
+    accent-color: rgb(76, 96, 71);
+    gap: 10px;
+}
+
+
+button {
+    align-self: flex-start;
+    padding: 8px 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    border: none;
+    font-weight: 700;
+    font-size: 1rem;
+    background-color:  #c1c68d;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color:  #dae097;
+    
+}
+
+
+/* Slutförda uppgifter */
+
+.completed-list {
+    text-decoration: line-through;
+    opacity: 0.6;
+}

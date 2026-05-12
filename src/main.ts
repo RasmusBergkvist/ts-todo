@@ -80,8 +80,10 @@ function renderToDos() {
       <label>
       <input type="checkbox" ${todo.completed ? "checked" : ""}> 
       <span class="task">${todo.task}</span>
-      <span class="prio">Prioritet: ${priorityText[todo.priority] || todo.priority}</span>
       </label>
+      <span class="prio">Prioritet: ${priorityText[todo.priority] || todo.priority}</span>
+      
+     
       `;
 
       //Hämtar input-element från skapat element
