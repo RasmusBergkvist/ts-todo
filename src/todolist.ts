@@ -18,6 +18,17 @@ export class TodoList {
         return this.todos;
     }
 
+    //Hanterar utförda uppgifter.
+    public markTodoCompleted(todoIndex: number):void{
+        //Om uppgiften inte finns i todoIndex, avbryt.
+        if(!this.todos[todoIndex]) return;
+
+        //Skiftar statusen mellan utförd och inte utförda uppgifter.
+        this.todos[todoIndex].completed = !this.todos[todoIndex].completed;
+        //Sparar till local storage.
+        StorageTodo.saveTodo(this.todos);
+    }
+
     public addToDo(task: string, priority: number): boolean {
         //Kontroll att input-värde har minst tre tecken samt att prioritet är valt. 
         if (task.length < 3 || !priority) {

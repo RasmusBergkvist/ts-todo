@@ -56,9 +56,11 @@ function renderToDos() {
   const todos = manager.getTodos();
 
 
-  if (todoList) {
+  if (todoList && completedList) {
     //Rensar lista innan utskrift
     todoList.innerHTML = "";
+    completedList.innerHTML = "";
+
 
     //Objekt som översätter prioriteringnummer till text. 
     const priorityText: Record<number, string> = {
@@ -68,21 +70,38 @@ function renderToDos() {
     }
 
 
-    todos.forEach((todo) => {
+    todos.forEach((todo, todoIndex) => {
       //Skapar li-element med tillgörande klassnamn
       const liEl = document.createElement("li");
       liEl.className = "todo-item";
 
       //Skriv ut till DOM
-      liEl.innerHTML += `
-      <input type="checkbox">
+      liEl.innerHTML = `
+      <label>
+      <input type="checkbox" ${todo.completed ? "checked" : ""}> 
       <span class="task">${todo.task}</span>
       <span class="prio">Prioritet: ${priorityText[todo.priority] || todo.priority}</span>
-      <label>
+      </label>
       `;
 
-      //Lägger till liEl i todoList
+      //Hämtar input-element från skapat element
+      const checkbox = liEl.querySelector("input") as HTMLInputElement;
+
+      //Lyssnar om checkbox ändras. I så fall skickas todoIndex till metoden markTodoCompleted.
+      checkbox.addEventListener("change", () => {
+        manager.markTodoCompleted(todoIndex);
+        //Uppdaterar listan i DOM
+        renderToDos();
+
+      })
+
+      //Lägger till uppgiften i rätt lista beoende om den är utförd eller inte.
+      if(todo.completed) {
+        completedList.appendChild(liEl);
+      }else {
       todoList.append(liEl);
+
+      }
 
     });
   }
