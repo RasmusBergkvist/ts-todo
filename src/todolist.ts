@@ -4,7 +4,7 @@ import type { Todo } from "./todo";
 //Hämtar StorageTodo som hanterar Local Storage.
 import { StorageTodo } from "./storagetodo";
 
-class TodoList {
+export class TodoList {
     //Skapar en array för uppgifterna. 
     private todos: Todo[] = []
 
@@ -13,9 +13,14 @@ class TodoList {
         this.todos = StorageTodo.loadTodo();
     }
 
+    //Hämtar arrayen med Todos som ska skrivas ut till DOM
+    public getTodos(): Todo[]{
+        return this.todos;
+    }
+
     public addToDo(task: string, priority: number): boolean {
-        //Kontroll att task och prioritet har värde
-        if (!task || !priority) {
+        //Kontroll att input-värde har minst tre tecken samt att prioritet är valt. 
+        if (task.length < 3 || !priority) {
             return false;
         }
 

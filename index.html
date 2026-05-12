@@ -9,19 +9,21 @@
   <body>
       <div class="container">
     <h1>Att göra</h1>
-
-    <div id="todo-list"></div>
-
-    <div id="completed-list"></div>
+    <ul id="todo-list"></ul>
+      
+    <h2>Slutförda uppgifter</h2>
+    <ul id="completed-list"></ul>
 
 
     <form id="todo-form">
+      <span id="error" class="error"></span>
+      
       <label for="task-input">Ny uppgift</label>
       <input type="text" id="task-input" name="task-input" placeholder="Uppgift som ska göras">
 
       <label for="priority-select">Prioritet</label>
       <select id="priority-select">
-        <option value="">Välj prioritet</option>
+        <option value="" selected disabled>Välj prioritet</option>
         <option value="1" class="high">Hög</option>
         <option value="2" class="medium">Medel</option>
         <option value="3" class="low">Låg</option>
