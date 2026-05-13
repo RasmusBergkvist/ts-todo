@@ -8,16 +8,16 @@ body {
     display: flex;
     justify-content: center;
     gap: 1rem;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #23272e;
-    
+
 
 }
 
 .container {
     max-width: 600px;
     width: 100%;
-    color:rgb(231, 232, 204);
+    color: rgb(231, 232, 204);
     padding: 1rem;
 }
 
@@ -29,17 +29,21 @@ li {
     list-style: none;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+
 }
 
 li:not(:last-child) {
     border-bottom: 1px solid #3e4451;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+
 }
 
 
-h1, h2 {
-    color:  #c1c68d;
+h1,
+h2 {
+    color: #c1c68d;
 }
 
 h1 {
@@ -56,88 +60,126 @@ section {
     border-radius: 12px;
 }
 
+.error {
+    display: block;
+    color: #e36666;
+    margin-top: 0.5rem;
+    padding-left: 1rem;
+}
+
+.error li {
+    display: list-item;
+    list-style: disc;
+    border-bottom: none;
+    padding-bottom: 0;
+}
 
 
-/* Formulär */ 
+
+/* Formulär */
 form {
     display: flex;
     flex-direction: column;
-    gap:10px;
-    
+    gap: 10px;
+
 }
 
 label {
+
     font-size: 1.1rem;
     font-weight: 600;
 
 }
 
-input, select {
-  padding: 12px;
-  border-radius: 6px;
-  font-size: 1rem;
+input,
+select {
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 1rem;
 
 }
 
 
 button {
     align-self: flex-start;
-    padding: 8px 10px;
+    padding: 8px;
     border-radius: 8px;
     margin-top: 10px;
     border: none;
     font-weight: 700;
     font-size: 1rem;
-    background-color:  #c1c68d;
+    background-color: #c1c68d;
     cursor: pointer;
 }
 
 button:hover {
-    background-color:  #dae097;
-    
+    background-color: #dae097;
+
 }
+
 /* Att göra uppgifter */
 .todo-top {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
 }
 
 .todo-item label {
     display: flex;
     align-items: center;
     gap: 1rem;
-  
-    
+
+
 }
 
 
 input[type="checkbox"] {
     height: 20px;
     width: 20px;
-    vertical-align: middle;
     cursor: pointer;
     accent-color: rgb(76, 96, 71);
     gap: 10px;
 }
 
+.items-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 
 
 .prios {
+    display: flex;
+    align-items: center;
+    line-height: 1;
     padding: 6px 10px;
     border-radius: 8px;
     color: white;
 }
 
 .prio1 {
-    background-color: #b15b5b;
+    background-color: #c95b5b;
 }
 
 .prio2 {
-    background-color: #4762a6;
+    background-color: #d3955c;
 }
 
 .prio3 {
-    background-color: #508865;
+    background-color: #7ba67b;
+}
+
+.delete-btn {
+    opacity: 0.6;
+    margin-top: 0;
+    padding: 6px 10px;
+    line-height: 1;
+}
+
+.delete-btn:hover {
+    opacity: 1;
 }
 
 

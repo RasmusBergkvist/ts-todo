@@ -19,13 +19,18 @@ export class TodoList {
     }
 
     //Hanterar utförda uppgifter.
-    public markTodoCompleted(todoIndex: number): void {
-        //Om uppgiften inte finns i todoIndex, avbryt.
-        if (!this.todos[todoIndex]) return;
+    public markTodoCompleted(todoId: number): void {
 
-        //Skiftar statusen mellan utförd och inte utförda uppgifter.
-        this.todos[todoIndex].completed = !this.todos[todoIndex].completed;
-        //Sparar till local storage.
+        //Letar upp uppgiften med hjälp av id
+        const todo = this.todos.find(todo => todo.id === todoId);
+
+        //Om uppgiften inte finns, avbryt
+        if(!todo) return;
+
+        //Växlar status om uppgiften är utförd
+        todo.completed = !todo.completed;
+
+        //Sparar till Local Storage
         StorageTodo.saveTodo(this.todos);
     }
 
@@ -37,6 +42,7 @@ export class TodoList {
 
         //Skapar nytt todo-objekt
         const newTodo: Todo = {
+            id: Date.now(),
             task: task,
             priority: priority,
             completed: false
@@ -72,6 +78,17 @@ export class TodoList {
 
         //Sparar den nya sorterade listan till Local storage
         StorageTodo.saveTodo(this.todos)
+    }
+    
+    //Hanterar borttagning av uppgift
+    public deleteTodos(deleteId: number): void {
+
+        //Filterar bort uppgiften med rätt id och behåller övriga
+        this.todos = this.todos.filter((todo) => todo.id !== deleteId);
+
+        //Sparar till Local Storage
+        StorageTodo.saveTodo(this.todos);
+        
     }
 }
 

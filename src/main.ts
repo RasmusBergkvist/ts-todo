@@ -9,7 +9,7 @@ const todoList = document.getElementById("todo-list") as HTMLUListElement;
 const completedList = document.getElementById("completed-list") as HTMLUListElement;
 const taskInput = document.getElementById("task-input") as HTMLInputElement;
 const prioritySelect = document.getElementById("priority-select") as HTMLSelectElement;
-const error = document.getElementById("error") as HTMLSpanElement;
+const error = document.getElementById("error") as HTMLUListElement;
 const completedMessage = document.getElementById("completed-message") as HTMLSpanElement;
 const taskMessage = document.getElementById("task-message") as HTMLSpanElement;
 const sort = document.getElementById("sort") as HTMLButtonElement;
@@ -29,11 +29,11 @@ if (todoForm) {
 
     //Validerar värderna
     if (task.length < 3) {
-      error.innerHTML += "Du måste skriva en uppgift. Minst 3 tecken."
+      error.innerHTML += "<li>Du måste skriva en uppgift. Minst 3 tecken.</li>"
     }
 
     if (!priority) {
-      error.innerHTML += "Du måste välja prioritet.";
+      error.innerHTML += "<li>Du måste välja prioritet.</li>";
     }
 
     //Om felmeddelande finns, avbryt.
@@ -101,7 +101,7 @@ function renderToDos() {
     }
 
 
-    todos.forEach((todo, todoIndex) => {
+    todos.forEach((todo) => {
       //Skapar li-element med tillgörande klassnamn
       const liEl = document.createElement("li");
       liEl.className = "todo-item";
@@ -112,7 +112,10 @@ function renderToDos() {
       <input type="checkbox" ${todo.completed ? "checked" : ""}> 
       <span class="task">${todo.task}</span>
       </label>
+      <div class="items-right">
       <span class="prios prio${todo.priority}">Prio: ${priorityText[todo.priority] || todo.priority}</span>
+      <button class="delete-btn">Ta bort</button>
+      </div>
       
      
       `;
@@ -120,13 +123,23 @@ function renderToDos() {
       //Hämtar input-element från skapat element
       const checkbox = liEl.querySelector("input") as HTMLInputElement;
 
-      //Lyssnar om checkbox ändras. I så fall skickas todoIndex till metoden markTodoCompleted.
+      //Lyssnar om checkbox ändras. I så fall skickas uppgiftens id till metoden markTodoCompleted.
       checkbox.addEventListener("change", () => {
-        manager.markTodoCompleted(todoIndex);
+        manager.markTodoCompleted(todo.id);
         //Uppdaterar listan i DOM
         renderToDos();
 
-      })
+      });
+
+      //Hämtar button-element
+      const deleteBtn = liEl.querySelector(".delete-btn") as HTMLButtonElement;
+
+      //Lyssnar på klick i knappen och anopar metod som filtrerar bort uppgiften med rätt id.
+      deleteBtn.addEventListener("click", ()=>{
+        manager.deleteTodos(todo.id);
+        renderToDos();
+
+      });
 
       //Lägger till uppgiften i rätt lista beoende om den är utförd eller inte.
       if (todo.completed) {
@@ -135,8 +148,8 @@ function renderToDos() {
         todoList.append(liEl);
 
       }
-
     });
+    
   }
 }
 
