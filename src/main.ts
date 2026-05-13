@@ -28,8 +28,10 @@ if (todoForm) {
     error.innerHTML = "";
 
     //Validerar värderna
-    if (task.length < 3) {
-      error.innerHTML += "<li>Du måste skriva en uppgift. Minst 3 tecken.</li>"
+    if (!task.length) {
+      error.innerHTML += "<li>Du måste skriva en uppgift.</li>"
+    } else if  (task.length < 3 || task.length > 60) {
+      error.innerHTML += "<li>Uppgiften måste bestå av 3 - 60 tecken.</li>"
     }
 
     if (!priority) {
@@ -82,13 +84,13 @@ function renderToDos() {
     if (countTask.length === 0) {
       taskMessage.innerHTML = "Allt är klart!"
     } else {
-      taskMessage.innerHTML = `Kämpa på! Du har ${countTask.length} saker kvar på listan.`
+      taskMessage.innerHTML = `Kämpa på! Du har ${countTask.length} ${countTask.length === 1 ? "sak" : "saker"} kvar på listan.`
     }
 
     if (countCompleted.length === 0) {
-      completedMessage.innerHTML = "Inga saker färdiga än."
+      completedMessage.innerHTML = "Inget på listan är klart, men du är på gång!"
     } else {
-      completedMessage.innerHTML = `Bra jobbat! Du är färdig med ${countCompleted.length} saker!`
+      completedMessage.innerHTML = `Bra jobbat! Du är färdig med ${countCompleted.length} ${countCompleted.length === 1 ? "sak" : "saker"}!`
     }
 
 

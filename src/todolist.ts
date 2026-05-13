@@ -60,7 +60,7 @@ export class TodoList {
 
     }
 
-    private sortAscending: boolean = true;
+    private sortAscending: boolean = false;
 
     public sortTodosPrio(): void {
 
@@ -75,9 +75,6 @@ export class TodoList {
 
         //Växlar ordning vid nästa klick.
         this.sortAscending = !this.sortAscending;
-
-        //Sparar den nya sorterade listan till Local storage
-        StorageTodo.saveTodo(this.todos)
     }
     
     //Hanterar borttagning av uppgift

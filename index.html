@@ -20,7 +20,7 @@
         <ul id="error" class="error"></ul>
 
         <label for="task-input">Ny uppgift</label>
-        <input type="text" id="task-input" name="task-input" placeholder="Ex. Plugga, träna, kolla hockey">
+        <input type="text" id="task-input" name="task-input" maxlength="60" placeholder="Ex. Plugga, träna, kolla hockey">
 
         <label for="priority-select">Prioritet</label>
         <select id="priority-select">
@@ -50,6 +50,8 @@
       <ul id="completed-list" class="completed-list"></ul>
       <span id="completed-message" class="message"></span>
     </section>
+
+    <footer><p><strong>Av: </strong> Rasmus Bergkvist</p></footer>
 
   </div>
   <script type="module" src="/src/main.ts"></script>
