@@ -29,7 +29,7 @@ if (todoForm) {
 
     //Validerar värderna
     if (!task.length) {
-      error.innerHTML += "<li>Du måste skriva en uppgift.</li>"
+      error.innerHTML += "<li>Du måste fylla i en uppgift.</li>"
     } else if  (task.length < 3 || task.length > 60) {
       error.innerHTML += "<li>Uppgiften måste bestå av 3 - 60 tecken.</li>"
     }
