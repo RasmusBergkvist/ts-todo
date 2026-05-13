@@ -10,6 +10,9 @@ const completedList = document.getElementById("completed-list") as HTMLUListElem
 const taskInput = document.getElementById("task-input") as HTMLInputElement;
 const prioritySelect = document.getElementById("priority-select") as HTMLSelectElement;
 const error = document.getElementById("error") as HTMLSpanElement;
+const completedMessage = document.getElementById("completed-message") as HTMLSpanElement;
+const taskMessage = document.getElementById("task-message") as HTMLSpanElement;
+
 
 if (todoForm) {
   todoForm.addEventListener("submit", (event) => {
@@ -62,6 +65,33 @@ function renderToDos() {
     completedList.innerHTML = "";
 
 
+
+    if(todos.length === 0) {
+      taskMessage.innerHTML = "Det är tomt på listan. Lägg till en uppgift.";
+      completedMessage.innerHTML = "";
+      return;
+    }
+
+    //Filtrer antal upppgifter att göra eller som är slutförda
+    const countTask = todos.filter(to => !to.completed);
+    const countCompleted =todos.filter(to => to.completed);
+
+
+
+    if(countTask.length === 0) {
+      taskMessage.innerHTML = "Allt är klart!"
+    } else {
+      taskMessage.innerHTML = `Kämpa på! Du har ${countTask.length} saker kvar på listan.`
+    }
+
+      if(countCompleted.length === 0) {
+      completedMessage.innerHTML = "Inga saker färdiga än."
+    } else {
+      completedMessage.innerHTML = `Bra jobbat! Du är färdig med ${countCompleted.length} saker!`
+    }
+
+
+
     //Objekt som översätter prioriteringnummer till text. 
     const priorityText: Record<number, string> = {
       1: "Hög",
@@ -81,7 +111,7 @@ function renderToDos() {
       <input type="checkbox" ${todo.completed ? "checked" : ""}> 
       <span class="task">${todo.task}</span>
       </label>
-      <span class="prio">Prioritet: ${priorityText[todo.priority] || todo.priority}</span>
+      <span class="prios prio${todo.priority}">Prio: ${priorityText[todo.priority] || todo.priority}</span>
       
      
       `;
