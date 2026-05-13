@@ -35,8 +35,8 @@ export class TodoList {
     }
 
     public addToDo(task: string, priority: number): boolean {
-        //Kontroll att input-värde har minst tre tecken samt att prioritet är valt. 
-        if (task.length < 3 || !priority) {
+        //Kontroll av antal tecken samt att prioritet är valt. 
+        if (task.length < 3 || task.length > 60 || !priority) {
             return false;
         }
 
