@@ -14,14 +14,14 @@ export class TodoList {
     }
 
     //Hämtar arrayen med Todos som ska skrivas ut till DOM
-    public getTodos(): Todo[]{
+    public getTodos(): Todo[] {
         return this.todos;
     }
 
     //Hanterar utförda uppgifter.
-    public markTodoCompleted(todoIndex: number):void{
+    public markTodoCompleted(todoIndex: number): void {
         //Om uppgiften inte finns i todoIndex, avbryt.
-        if(!this.todos[todoIndex]) return;
+        if (!this.todos[todoIndex]) return;
 
         //Skiftar statusen mellan utförd och inte utförda uppgifter.
         this.todos[todoIndex].completed = !this.todos[todoIndex].completed;
@@ -54,7 +54,25 @@ export class TodoList {
 
     }
 
+    private sortAscending: boolean = true;
 
+    public sortTodosPrio(): void {
+
+        if (this.sortAscending) {
+            //Hög prio först
+            this.todos.sort((a, b) => a.priority - b.priority);
+        } else {
+
+            //Låg prio först
+            this.todos.sort((a, b) => b.priority - a.priority)
+        }
+
+        //Växlar ordning vid nästa klick.
+        this.sortAscending = !this.sortAscending;
+
+        //Sparar den nya sorterade listan till Local storage
+        StorageTodo.saveTodo(this.todos)
+    }
 }
 
 

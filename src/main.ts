@@ -12,6 +12,7 @@ const prioritySelect = document.getElementById("priority-select") as HTMLSelectE
 const error = document.getElementById("error") as HTMLSpanElement;
 const completedMessage = document.getElementById("completed-message") as HTMLSpanElement;
 const taskMessage = document.getElementById("task-message") as HTMLSpanElement;
+const sort = document.getElementById("sort") as HTMLButtonElement;
 
 
 if (todoForm) {
@@ -66,7 +67,7 @@ function renderToDos() {
 
 
 
-    if(todos.length === 0) {
+    if (todos.length === 0) {
       taskMessage.innerHTML = "Det är tomt på listan. Lägg till en uppgift.";
       completedMessage.innerHTML = "";
       return;
@@ -74,17 +75,17 @@ function renderToDos() {
 
     //Filtrer antal upppgifter att göra eller som är slutförda
     const countTask = todos.filter(to => !to.completed);
-    const countCompleted =todos.filter(to => to.completed);
+    const countCompleted = todos.filter(to => to.completed);
 
 
 
-    if(countTask.length === 0) {
+    if (countTask.length === 0) {
       taskMessage.innerHTML = "Allt är klart!"
     } else {
       taskMessage.innerHTML = `Kämpa på! Du har ${countTask.length} saker kvar på listan.`
     }
 
-      if(countCompleted.length === 0) {
+    if (countCompleted.length === 0) {
       completedMessage.innerHTML = "Inga saker färdiga än."
     } else {
       completedMessage.innerHTML = `Bra jobbat! Du är färdig med ${countCompleted.length} saker!`
@@ -128,10 +129,10 @@ function renderToDos() {
       })
 
       //Lägger till uppgiften i rätt lista beoende om den är utförd eller inte.
-      if(todo.completed) {
+      if (todo.completed) {
         completedList.appendChild(liEl);
-      }else {
-      todoList.append(liEl);
+      } else {
+        todoList.append(liEl);
 
       }
 
@@ -139,4 +140,16 @@ function renderToDos() {
   }
 }
 
+//Hämtar metod och sortera prioriteringar.
+function sortPrio() {
+  if (sort) {
+
+    sort.addEventListener("click", () => {
+      manager.sortTodosPrio();
+      renderToDos();
+
+    });
+  }
+}
+sortPrio();
 renderToDos();
