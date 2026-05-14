@@ -3,6 +3,9 @@
 ## Laborationsbeskrivning
 I denna laboration har jag skapat en ”att göra-applikation” där man kan lägga till uppgifter och prioritet. Det går att markera uppgifterna som slutförda samt att de sparas till Local Storage. Det finns även ett interface med objektets egenskaper och en klass som hanterar metoderna som utförs.
 
+### Url till appplikation
+https://rb-todo-list.netlify.app/
+
 ### Tekniker
 * HTML
 * CSS
