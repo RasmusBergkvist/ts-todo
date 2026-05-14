@@ -130,7 +130,7 @@ button:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .todo-item {
@@ -165,10 +165,9 @@ input[type="checkbox"] {
 
 
 .prios {
-    display: flex;
-    align-items: center;
     line-height: 1;
-    padding: 6px 10px;
+    padding: 6px 8px;
+    border: none;
     border-radius: 8px;
     color: white;
 }
@@ -188,7 +187,7 @@ input[type="checkbox"] {
 .delete-btn {
     opacity: 0.6;
     margin-top: 0;
-    padding: 6px 10px;
+    padding: 6px 8px;
     line-height: 1;
 }
 
@@ -203,6 +202,14 @@ input[type="checkbox"] {
     text-decoration: line-through;
     opacity: 0.6;
 }
+
+.completed h2 {
+    margin-bottom: 1rem;
+}
+
+
+
+/* Footer */
 
 footer {
     position: absolute;
